@@ -10,9 +10,19 @@ class Liste:
         self.tete = tete # stockage de sa tête. Le paramètre 'tete' est bien entendu de type Maillon !*
 
     def is_empty(self):
+        """
+        Verifie si liste est vide
+        Input : None
+        Output : True or False
+        """
         return self.tete == None
 
     def list_elements(self):
+        """
+        Retourne les elements présents dans la liste
+        Input : None
+        Output : Tableau des elements de Liste
+        """
         elements = []
         elmnt = self.tete
         while elmnt.suivant != None :
@@ -22,6 +32,11 @@ class Liste:
         return elements
 
     def get_element(self,n):
+        """
+        Retourne l'element de la liste à len(n)
+        Input : n 
+        Output : element à len(n)
+        """
         ele = self.tete
         if self.len()-1<n:
             return "error"
@@ -30,6 +45,11 @@ class Liste:
         return ele.valeur
 
     def len(self):
+        """
+        Retourne la longeur de la liste
+        Input : None
+        Output : len(Liste)
+        """
         elem = self.tete
         len = 1
         while elem.suivant != None :
@@ -38,10 +58,20 @@ class Liste:
         return len
 
     def insert_first(self,element):
+        """
+        Ajoute un element au début de la liste
+        Input : element
+        Output : Liste + element à self.tete
+        """
         new_element = Maillon(element,self.tete)
         self.tete = new_element
 
     def append(self,element):
+        """
+        Ajoute un element à la fin de la liste
+        Input : element
+        Output : Liste + element à len(Liste)
+        """
         if self.len() == 1 :
             Liste1.insert_first(element)
             return "valeur ajoutée"
@@ -52,6 +82,11 @@ class Liste:
         elmnt.suivant = new_element
 
     def insert(self,indice,element):
+        """
+        Fonction qui ajoute un element à len(indice)
+        Input : indice,element
+        Output : Liste + elemnt à len(indice)
+        """
         new_element = Maillon(element,None)
         elmnt = self.tete
         for i in range(self.len()-1):
@@ -61,12 +96,22 @@ class Liste:
             elmnt = elmnt.suivant
     
     def pop_first(self):
+        """
+        Fonction qui supprime le premier element de la liste
+        Input : None
+        Output : Liste sans le premier element
+        """
         if self.is_empty is True :
             return 'Liste vide'
         elmnt = self.tete
         self.tete = elmnt.suivant
     
     def pop_last(self):
+        """
+        Fonction qui supprime le dernier element de la liste
+        Input : None
+        Output : Liste sans le dernier element
+        """
         if self.is_empty is True :
             return 'Liste vide'
         elmnt = self.tete
@@ -75,6 +120,11 @@ class Liste:
         elmnt.suivant = None
     
     def pop(self,indice):
+        """
+        Fonction qui supprime l'element à len(indice) de la liste
+        Input : indice
+        Output : Liste sans element à len(indice)
+        """
         if self.is_empty is True :
             return 'Liste vide'
         elmnt = self.tete
@@ -92,10 +142,3 @@ class Liste:
                 elmnt.suivant = temp_elmnt.suivant
                 cndt = True
         
-
-            
-            
-
-Liste1 = Liste(Maillon(1,Maillon(4,Maillon(7,Maillon(7,Maillon(90,Maillon('aaa',)))))))
-print(Liste1.pop(3))
-print(Liste1.list_elements())
